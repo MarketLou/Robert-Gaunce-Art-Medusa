@@ -1,0 +1,83 @@
+# Database Configuration (Railway PostgreSQL)
+DATABASE_URL=postgresql://postgres:yRMGSJLCjXyYubWnlckykAhHnIGSMwrr@nozomi.proxy.rlwy.net:13886/railway
+
+# Redis Configuration (Railway Redis)
+REDIS_URL=redis://default:HEVGWISvadPvxykQJtXYpdyAPoyaaQgk@switchback.proxy.rlwy.net:27357
+
+# Security Secrets (IMPORTANT: Keep these secure!)
+JWT_SECRET=37656792d75885bd85e6be88a3f495e00ff2b8c9ec58047b3edcb923ecdbe33f
+COOKIE_SECRET=397cf636a773a16ffd94861d2f5d30f5ae0384c205061e0ad7a3cbb62a584255
+
+# CORS Configuration (allows both local dev and production domain)
+STORE_CORS=http://localhost:3000,https://robertgaunceart.com
+ADMIN_CORS=http://localhost:3000,https://robertgaunceart.com
+AUTH_CORS=http://localhost:3000,https://robertgaunceart.com
+
+# Server Configuration
+NODE_ENV=development
+PORT=9000
+MEDUSA_BACKEND_URL=http://localhost:9000
+MEDUSA_WORKER_MODE=shared
+
+# DigitalOcean Spaces Configuration
+S3_URL=https://robert-gaunce-art-media.nyc3.cdn.digitaloceanspaces.com
+S3_ENDPOINT=https://nyc3.digitaloceanspaces.com
+S3_REGION=nyc3
+S3_BUCKET=robert-gaunce-art-media
+S3_ACCESS_KEY_ID=DO8014BL98WLWXRP7RAA
+S3_SECRET_ACCESS_KEY=6nhD/m8xUb5M1gDXDkMCjq+XFJOxcRDaXUPF9avwfXI
+
+# ============================================================================
+# RAILWAY ADMIN NODE CONFIGURATION
+# ============================================================================
+# Use these variables for your Railway Admin Service
+# Replace YOUR_RAILWAY_URL with your actual Railway deployment URL
+# (e.g., https://robert-gaunce-art-production.up.railway.app)
+
+# Logging
+LOG_LEVEL=debug
+
+# CORS Configuration (Production)
+AUTH_CORS=http://localhost:3000,https://robertgaunceart.com,https://www.robertgaunceart.com,https://YOUR_RAILWAY_URL
+STORE_CORS=http://localhost:3000,https://robertgaunceart.com,https://www.robertgaunceart.com
+ADMIN_CORS=https://YOUR_RAILWAY_URL,https://robertgaunceart.com,https://www.robertgaunceart.com,http://localhost:3000
+
+# Admin & Worker Configuration
+DISABLE_MEDUSA_ADMIN=false
+MEDUSA_WORKER_MODE=server
+
+# Database Configuration (Railway Reference - Use this instead of direct URL)
+DATABASE_URL=${{Postgres.DATABASE_URL}}
+
+# Redis Configuration (Railway Reference with IPv4 family setting)
+REDIS_URL=${{Redis.REDIS_URL}}?family=0
+
+# Backend URLs
+BACKEND_URL=https://YOUR_RAILWAY_URL
+MEDUSA_BACKEND_URL=https://YOUR_RAILWAY_URL
+
+# Security Secrets (Same as local)
+COOKIE_SECRET=397cf636a773a16ffd94861d2f5d30f5ae0384c205061e0ad7a3cbb62a584255
+JWT_SECRET=37656792d75885bd85e6be88a3f495e00ff2b8c9ec58047b3edcb923ecdbe33f
+
+# Server Port
+PORT=9000
+
+# DigitalOcean Spaces (Same as local)
+DO_SPACE_URL=https://robert-gaunce-art-media.nyc3.cdn.digitaloceanspaces.com
+DO_SPACE_ACCESS_KEY=DO8014BL98WLWXRP7RAA
+DO_SPACE_SECRET_KEY=6nhD/m8xUb5M1gDXDkMCjq+XFJOxcRDaXUPF9avwfXI
+DO_SPACE_REGION=nyc3
+DO_SPACE_BUCKET=robert-gaunce-art-media
+DO_SPACE_ENDPOINT=https://nyc3.digitaloceanspaces.com
+
+# Payment Processing (NOT YET CONFIGURED - Add when setting up Stripe)
+# STRIPE_API_KEY=sk_test_YOUR_KEY_HERE
+# STRIPE_WEBHOOK_SECRET=whsec_YOUR_WEBHOOK_SECRET_HERE
+
+# Email Notifications (NOT YET CONFIGURED - Add when setting up Resend)
+# RESEND_API_KEY=re_YOUR_KEY_HERE
+# RESEND_FROM_EMAIL=noreply@robertgaunceart.com
+# RESEND_REPLY_TO_EMAIL=contact@robertgaunceart.com
+# TO_EMAIL=your_email@example.com
+# ENABLE_EMAIL_NOTIFICATIONS=true
