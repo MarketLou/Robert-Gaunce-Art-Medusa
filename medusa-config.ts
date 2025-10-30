@@ -39,7 +39,8 @@ module.exports = defineConfig({
         },
       },
     },
-    ...(process.env.S3_BUCKET ? {
+    // Enable DigitalOcean Spaces FILE provider only if configured
+    ...(process.env.DO_SPACE_BUCKET ? {
       [Modules.FILE]: {
         resolve: '@medusajs/medusa/file',
         options: {
@@ -48,12 +49,12 @@ module.exports = defineConfig({
               resolve: '@medusajs/medusa/file-s3',
               id: 's3',
               options: {
-                file_url: process.env.S3_URL,
-                access_key_id: process.env.S3_ACCESS_KEY_ID,
-                secret_access_key: process.env.S3_SECRET_ACCESS_KEY,
-                region: process.env.S3_REGION,
-                bucket: process.env.S3_BUCKET,
-                endpoint: process.env.S3_ENDPOINT,
+                file_url: process.env.DO_SPACE_URL,
+                access_key_id: process.env.DO_SPACE_ACCESS_KEY,
+                secret_access_key: process.env.DO_SPACE_SECRET_KEY,
+                region: process.env.DO_SPACE_REGION,
+                bucket: process.env.DO_SPACE_BUCKET,
+                endpoint: process.env.DO_SPACE_ENDPOINT,
               },
             },
           ],
