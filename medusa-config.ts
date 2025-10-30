@@ -6,7 +6,7 @@ export default defineConfig({
     http: {
       storeCors: process.env.STORE_CORS || "http://localhost:3000",
       adminCors: process.env.ADMIN_CORS || "http://localhost:3000",
-      authCors: process.env.ADMIN_CORS || "http://localhost:3000",
+      authCors: process.env.AUTH_CORS || "http://localhost:3000",
       jwtSecret: process.env.JWT_SECRET || "supersecret",
       cookieSecret: process.env.COOKIE_SECRET || "supersecret",
     },
@@ -36,7 +36,8 @@ export default defineConfig({
         },
       },
     },
-    {
+    // S3 File Storage - Only enabled if S3_BUCKET is configured
+    ...(process.env.S3_BUCKET ? [{
       resolve: "@medusajs/file-s3",
       options: {
         file_url: process.env.S3_URL,
@@ -49,7 +50,7 @@ export default defineConfig({
           forcePathStyle: true,
         },
       },
-    },
+    }] : []),
   ],
 });
 
