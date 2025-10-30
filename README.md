@@ -1,104 +1,62 @@
-# Robert Gaunce Art - Medusa Backend
+<p align="center">
+  <a href="https://www.medusajs.com">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/59018053/229103275-b5e482bb-4601-46e6-8142-244f531cebdb.svg">
+    <source media="(prefers-color-scheme: light)" srcset="https://user-images.githubusercontent.com/59018053/229103726-e5b529a3-9b3f-4970-8a1f-c6af37f087bf.svg">
+    <img alt="Medusa logo" src="https://user-images.githubusercontent.com/59018053/229103726-e5b529a3-9b3f-4970-8a1f-c6af37f087bf.svg">
+    </picture>
+  </a>
+</p>
+<h1 align="center">
+  Medusa
+</h1>
 
-E-commerce backend built with Medusa v2 for selling original canvas artwork.
+<h4 align="center">
+  <a href="https://docs.medusajs.com">Documentation</a> |
+  <a href="https://www.medusajs.com">Website</a>
+</h4>
 
-## Tech Stack
-- **Framework:** Medusa.js v2.11.1+
-- **Database:** PostgreSQL (Railway)
-- **Cache/Queue:** Redis (Railway)
-- **Storage:** DigitalOcean Spaces (S3-compatible)
-- **Payments:** Stripe
-- **Hosting:** Railway
+<p align="center">
+  Building blocks for digital commerce
+</p>
+<p align="center">
+  <a href="https://github.com/medusajs/medusa/blob/master/CONTRIBUTING.md">
+    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat" alt="PRs welcome!" />
+  </a>
+    <a href="https://www.producthunt.com/posts/medusa"><img src="https://img.shields.io/badge/Product%20Hunt-%231%20Product%20of%20the%20Day-%23DA552E" alt="Product Hunt"></a>
+  <a href="https://discord.gg/xpCwq3Kfn8">
+    <img src="https://img.shields.io/badge/chat-on%20discord-7289DA.svg" alt="Discord Chat" />
+  </a>
+  <a href="https://twitter.com/intent/follow?screen_name=medusajs">
+    <img src="https://img.shields.io/twitter/follow/medusajs.svg?label=Follow%20@medusajs" alt="Follow @medusajs" />
+  </a>
+</p>
 
-## Project Structure
-```
-├── src/
-│   ├── api/          # Custom API routes
-│   ├── workflows/    # Custom business logic workflows
-│   ├── subscribers/  # Event subscribers
-│   └── scripts/      # Seed and utility scripts
-├── medusa-config.ts  # Main configuration
-├── package.json
-└── .env             # Environment variables (not committed)
-```
+## Compatibility
 
-## Setup
+This starter is compatible with versions >= 2 of `@medusajs/medusa`. 
 
-### 1. Install Dependencies
-```bash
-npm install
-```
+## Getting Started
 
-### 2. Configure Environment Variables
-Copy `.env.template` to `.env` and fill in your Railway database URLs and API keys:
-```bash
-cp .env.template .env
-```
+Visit the [Quickstart Guide](https://docs.medusajs.com/learn/installation) to set up a server.
 
-Required variables:
-- `DATABASE_URL` - Railway PostgreSQL connection string
-- `REDIS_URL` - Railway Redis connection string
-- `JWT_SECRET` & `COOKIE_SECRET` - Random secure strings
-- `S3_*` - DigitalOcean Spaces credentials
-- `STRIPE_API_KEY` & `STRIPE_WEBHOOK_SECRET` - Stripe credentials
+Visit the [Docs](https://docs.medusajs.com/learn/installation#get-started) to learn more about our system requirements.
 
-### 3. Run Database Migrations
-```bash
-npm run db:migrate
-```
+## What is Medusa
 
-### 4. Create Admin User
-```bash
-npx medusa user --email admin@robertgaunceart.com --password [your-secure-password]
-```
+Medusa is a set of commerce modules and tools that allow you to build rich, reliable, and performant commerce applications without reinventing core commerce logic. The modules can be customized and used to build advanced ecommerce stores, marketplaces, or any product that needs foundational commerce primitives. All modules are open-source and freely available on npm.
 
-### 5. Start Development Server
-```bash
-npm run dev
-```
+Learn more about [Medusa’s architecture](https://docs.medusajs.com/learn/introduction/architecture) and [commerce modules](https://docs.medusajs.com/learn/fundamentals/modules/commerce-modules) in the Docs.
 
-The admin dashboard will be available at `http://localhost:9000/app`
+## Community & Contributions
 
-## Railway Deployment
+The community and core team are available in [GitHub Discussions](https://github.com/medusajs/medusa/discussions), where you can ask for support, discuss roadmap, and share ideas.
 
-### Services Required:
-1. **Primary Node** - Main API server (`npm start`)
-2. **Worker Node** - Background job processor (`npm run start:worker`)
-3. **PostgreSQL** - Database
-4. **Redis** - Cache and event queue
+Join our [Discord server](https://discord.com/invite/medusajs) to meet other community members.
 
-### Environment Variables to Set in Railway:
-All variables from `.env.template` must be configured in the Railway dashboard for both Primary and Worker services.
+## Other channels
 
-### Deployment Commands:
-- Build: `npm run build`
-- Start (Primary): `npm start`
-- Start (Worker): `npm run start:worker`
-
-## Frontend Integration
-
-The Nuxt 4.2 storefront connects to this backend via the Medusa JS SDK:
-
-```typescript
-import Medusa from "@medusajs/js-sdk"
-
-const medusa = new Medusa({
-  baseUrl: "https://your-railway-url.railway.app",
-  auth: {
-    type: "session"
-  }
-})
-```
-
-## Product Configuration
-
-Physical canvas products require:
-- Inventory tracking enabled
-- Shipping profile configured
-- Fulfillment provider set up (manual or automated)
-- Product images uploaded to S3
-
-## Support
-
-For issues or questions, contact: admin@robertgaunceart.com
-
+- [GitHub Issues](https://github.com/medusajs/medusa/issues)
+- [Twitter](https://twitter.com/medusajs)
+- [LinkedIn](https://www.linkedin.com/company/medusajs)
+- [Medusa Blog](https://medusajs.com/blog/)
