@@ -20,6 +20,9 @@ const isStripeConfigured = Boolean(stripeApiKey) && Boolean(stripeWebhookSecret)
 
 if (isStripeConfigured) {
   console.log('✅ Stripe is configured, adding payment module')
+  console.log('🔧 PAYMENT PROVIDER CONFIG:')
+  console.log('- Provider ID being registered: pp_stripe')
+  console.log('- Provider resolve path: @medusajs/medusa/payment-stripe')
   dynamicModules[Modules.PAYMENT] = {
     resolve: '@medusajs/medusa/payment',
     options: {
@@ -39,6 +42,8 @@ if (isStripeConfigured) {
       ],
     },
   }
+  console.log('✅ Payment module configured with provider ID: pp_stripe')
+  console.log('📋 Full payment module config:', JSON.stringify(dynamicModules[Modules.PAYMENT], null, 2))
 } else {
   console.log('❌ Stripe not configured - missing API key or webhook secret')
 }
@@ -111,6 +116,20 @@ const config = defineConfig({
     ...dynamicModules,
   },
 })
+
+// Log final module configuration
+console.log('📦 [CONFIG] Final modules being registered:')
+console.log('- Modules count:', Object.keys(config.modules || {}).length)
+console.log('- Module keys:', Object.keys(config.modules || {}))
+if (config.modules && typeof config.modules === 'object') {
+  Object.keys(config.modules).forEach(key => {
+    const module = (config.modules as any)[key]
+    if (module && module.options && module.options.providers) {
+      console.log(`- Module "${key}" providers:`, module.options.providers.map((p: any) => ({ id: p.id, resolve: p.resolve })))
+    }
+  })
+}
+console.log('✅ [CONFIG] Configuration loaded successfully')
 
 // Export the config
 module.exports = config
