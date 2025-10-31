@@ -89,7 +89,7 @@ const modules: any = {
 }
 
 // Define the configuration in the format TypeScript expects
-const config = defineConfig({
+let config = defineConfig({
   projectConfig: {
     databaseUrl: process.env.DATABASE_URL,
     redisUrl: process.env.REDIS_URL,
