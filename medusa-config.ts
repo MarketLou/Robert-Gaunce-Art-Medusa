@@ -89,7 +89,7 @@ const modules: any = {
 }
 
 // Define the configuration in the format TypeScript expects
-let config = defineConfig({
+const config = defineConfig({
   projectConfig: {
     databaseUrl: process.env.DATABASE_URL,
     redisUrl: process.env.REDIS_URL,
@@ -112,11 +112,5 @@ let config = defineConfig({
   },
 })
 
-// Manually add the snake_case properties that the runtime server needs for CORS.
-// We cast the config object to 'any' to bypass the strict TypeScript check for this specific fix.
-(config.projectConfig as any).store_cors = process.env.STORE_CORS || '';
-(config.projectConfig as any).admin_cors = process.env.ADMIN_CORS || '';
-(config.projectConfig as any).auth_cors = process.env.AUTH_CORS || '';
-
-// Export the final, modified config
+// Export the config
 module.exports = config
