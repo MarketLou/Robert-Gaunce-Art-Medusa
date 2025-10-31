@@ -26,7 +26,7 @@ if (isStripeConfigured) {
       providers: [
         {
           resolve: '@medusajs/medusa/payment-stripe',
-          id: 'stripe',
+          id: 'pp_stripe',
           options: {
             apiKey: stripeApiKey,
             webhookSecret: stripeWebhookSecret,
