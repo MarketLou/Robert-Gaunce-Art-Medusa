@@ -114,9 +114,9 @@ const config = defineConfig({
 
 // Manually add the snake_case properties that the runtime server needs for CORS.
 // We cast the config object to 'any' to bypass the strict TypeScript check for this specific fix.
-(config.projectConfig as any).store_cors = process.env.STORE_CORS || ''
-(config.projectConfig as any).admin_cors = process.env.ADMIN_CORS || ''
-(config.projectConfig as any).auth_cors = process.env.AUTH_CORS || ''
+(config.projectConfig as any).store_cors = process.env.STORE_CORS || '';
+(config.projectConfig as any).admin_cors = process.env.ADMIN_CORS || '';
+(config.projectConfig as any).auth_cors = process.env.AUTH_CORS || '';
 
 // Export the final, modified config
 module.exports = config
